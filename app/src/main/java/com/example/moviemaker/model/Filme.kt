@@ -1,4 +1,4 @@
-package com.example.moviemaker
+package com.example.moviemaker.model
 
 data class Filme(
     val id: Int,

@@ -1,17 +1,17 @@
-package com.example.moviemaker
+package com.example.moviemaker.controller
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.moviemaker.R
+import com.example.moviemaker.model.Filme
 
 class MainActivity : AppCompatActivity() {
 
     private fun createFilms() : List<Filme>{
         return listof(
-            Filme("Filme1",1999,"Terror"),
-            Filme("Filme2",1998,"Ação")
+            Filme(1, "Filme1", 1999, "Terror", "lalala"),
+            Filme(2, "Filme2", 1998, "Ação", "lololo")
         )
     }
     override fun onCreate(savedInstanceState: Bundle?) {
