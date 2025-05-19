@@ -23,10 +23,6 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,null,
         db.execSQL(createTable)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Atualização
-    }
-
     override fun onCreate(p0: SQLiteDatabase?) {
         TODO("Not yet implemented")
     }
