@@ -9,7 +9,7 @@ import com.example.moviemaker.model.Filme
 class MainActivity : AppCompatActivity() {
 
     private fun createFilms() : List<Filme>{
-        return listof(
+        return listOf(
             Filme(1, "Filme1", 1999, "Terror", "lalala"),
             Filme(2, "Filme2", 1998, "Ação", "lololo")
         )
