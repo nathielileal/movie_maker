@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MovieMaker"
         tools:targetApi="31">
         <activity
+            android:name=".controller.NewCharActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailActivity"
             android:exported="false" />
         <activity
