@@ -1,18 +1,17 @@
 package com.example.moviemaker.controller
 
-import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import com.example.moviemaker.R
-import com.example.moviemaker.model.Filme
-import android.widget.ListView
-import android.widget.TextView
-import kotlinx.coroutines.ParentJob
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
-import com. example. moviemaker. DetailActivity
+import android.widget.ListView
+import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import com.example.moviemaker.DetailActivity
+import com.example.moviemaker.R
 import com.example.moviemaker.data.FilmeDAO
+import com.example.moviemaker.model.Filme
 
 class MainActivity : AppCompatActivity() {
 
