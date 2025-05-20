@@ -6,4 +6,8 @@ data class Filme(
     val data_lancamento: String,
     val genero: String,
     val sinopse: String
-)
+) {
+    override fun toString(): String {
+        return nome
+    }
+}

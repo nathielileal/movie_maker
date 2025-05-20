@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             listView.visibility = ListView.VISIBLE
             emptyTextView.visibility = TextView.GONE
+
+            val nomesDosFilmes = chars.map { it.nome }
             val adapter : ArrayAdapter<Filme> = ArrayAdapter(this, android.R.layout.simple_list_item_1, chars)
             listView.adapter = adapter
         }
