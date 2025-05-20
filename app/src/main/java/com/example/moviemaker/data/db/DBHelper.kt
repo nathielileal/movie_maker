@@ -14,24 +14,19 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,null,
 
     override fun onCreate(db: SQLiteDatabase) {
         val createTable = """
-            CREATE TABLE $TABLE_NAME (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                nome TEXT,
-                casa TEXT
-            )
-        """.trimIndent()
+        CREATE TABLE $TABLE_NAME (
+            id_filme INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT NOT NULL,
+            data_lancamento TEXT,
+            genero TEXT,
+            sinopse TEXT
+        )
+    """.trimIndent()
         db.execSQL(createTable)
     }
 
-    override fun onCreate(p0: SQLiteDatabase?) {
-        TODO("Not yet implemented")
-    }
-
-    override fun onUpgrade(
-        p0: SQLiteDatabase?,
-        p1: Int,
-        p2: Int
-    ) {
-        TODO("Not yet implemented")
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
     }
 }

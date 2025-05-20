@@ -1,9 +1,9 @@
 package com.example.moviemaker.model
 
 data class Filme(
-    val id: Int,
+    val id_filme: Int,
     val nome: String,
-    val ano: Int,
+    val data_lancamento: String,
     val genero: String,
     val sinopse: String
 )
