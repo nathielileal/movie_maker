@@ -7,8 +7,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.moviemaker.R
 import com.example.moviemaker.data.FilmeDAO
 import com.example.moviemaker.model.Filme
@@ -16,7 +14,7 @@ import com.example.moviemaker.model.Filme
 class NewCharActivity : AppCompatActivity() {
 
     private lateinit var filmeDao: FilmeDAO
-    private var id_filme: Int = 0
+    private var idFilme: Int = 0
     private lateinit var etName: EditText
     private lateinit var etYear: EditText
     private lateinit var etGenre: EditText
@@ -36,10 +34,10 @@ class NewCharActivity : AppCompatActivity() {
         etSinopse = findViewById(R.id.etSinopse)
         btnSave = findViewById(R.id.btnSave)
 
-        id_filme = intent.getIntExtra("id_filme", 0)
+        idFilme = intent.getIntExtra("id_filme", 0)
 
-        if (id_filme != 0) {
-            val filme = filmeDao.getFilmById(id_filme)
+        if (idFilme != 0) {
+            val filme = filmeDao.getFilmById(idFilme)
             if (filme != null) {
                 etName.setText(filme.nome)
                 etYear.setText(filme.data_lancamento)
@@ -56,14 +54,14 @@ class NewCharActivity : AppCompatActivity() {
             etSinopse.text.isNotEmpty()
         ) {
             val filme = Filme(
-                id_filme = id_filme,
+                id_filme = idFilme,
                 nome = etName.text.toString(),
                 data_lancamento = etYear.text.toString(),
                 genero = etGenre.text.toString(),
                 sinopse = etSinopse.text.toString()
             )
 
-            if (id_filme == 0) {
+            if (idFilme == 0) {
                 filmeDao.insert(filme)
                 Toast.makeText(this, "Filme Adicionado", Toast.LENGTH_SHORT).show()
             } else {
