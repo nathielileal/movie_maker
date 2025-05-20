@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviemaker.DetailActivity
+import com.example.moviemaker.QueryActivity
 import com.example.moviemaker.R
 import com.example.moviemaker.data.FilmeDAO
 import com.example.moviemaker.model.Filme
@@ -55,6 +56,11 @@ class MainActivity : AppCompatActivity() {
 
     fun newChar(view:View) {
         val intent = Intent(this, NewCharActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun searchChar(view:View) {
+        val intent = Intent(this, QueryActivity::class.java)
         startActivity(intent)
     }
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".controller.MainActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -29,13 +29,23 @@
             android:visibility="gone"
             android:paddingTop="30dp"
             android:paddingBottom="30dp"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adicionar personagem"
-            android:onClick="newChar"
+            android:layout_gravity="center_horizontal"
             android:layout_weight="0"
-            android:layout_gravity="center_horizontal"/>
+            android:onClick="newChar"
+            android:text="Adicionar filme" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0"
+            android:onClick="searchChar"
+            android:text="Pesquisar filme" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
