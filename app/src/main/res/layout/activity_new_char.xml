@@ -6,5 +6,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.NewCharActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="visible">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:text="Filme"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/etYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ano de Lançamento"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/etGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gênero"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/etSinopse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sinopse"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="saveChar"
+            android:text="Salvar"
+            android:textSize="24sp" />
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:onClick="deleteChar"
+            android:text="Excluir"
+            android:textSize="24sp"
+            android:visibility="gone" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
