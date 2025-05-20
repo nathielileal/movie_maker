@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+<<<<<<< HEAD
 
         listView = findViewById(R.id.lvChars)
         emptyTextView = findViewById(R.id.tvEmpty)
@@ -32,5 +33,12 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, DetailActivity::class.java)
 
         }
+=======
+        //ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.queryInput)) { v, insets ->
+       //     val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+       //     v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+      //      insets
+     //   }
+>>>>>>> 947e4f1cee256f5a8fffba25a083f6b5ec597420
     }
 }
