@@ -15,41 +15,46 @@ import com.example.moviemaker.model.Filme
 
 class NewCharActivity : AppCompatActivity() {
 
-    private lateinit var FilmeDao : FilmeDAO
-    private var id_filme : Int = 0
-    private lateinit var etName : EditText
-    private lateinit var etYear : EditText
-    private lateinit var etGenre : EditText
-    private lateinit var etSinopse : EditText
-    private lateinit var btnSave : Button
+    private lateinit var filmeDao: FilmeDAO
+    private var id_filme: Int = 0
+    private lateinit var etName: EditText
+    private lateinit var etYear: EditText
+    private lateinit var etGenre: EditText
+    private lateinit var etSinopse: EditText
+    private lateinit var btnSave: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_new_char)
 
-        FilmeDao = FilmeDAO(this)
+        filmeDao = FilmeDAO(this)
 
-        etName = findViewById<EditText>(R.id.etName)
-        etYear = findViewById<EditText>(R.id.etYear)
-        etGenre = findViewById<EditText>(R.id.etGenre)
-        etSinopse = findViewById<EditText>(R.id.etSinopse)
-        btnSave = findViewById<Button>(R.id.btnSave)
+        etName = findViewById(R.id.etName)
+        etYear = findViewById(R.id.etYear)
+        etGenre = findViewById(R.id.etGenre)
+        etSinopse = findViewById(R.id.etSinopse)
+        btnSave = findViewById(R.id.btnSave)
 
         id_filme = intent.getIntExtra("id_filme", 0)
 
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        if (id_filme != 0) {
+            val filme = filmeDao.getFilmById(id_filme)
+            if (filme != null) {
+                etName.setText(filme.nome)
+                etYear.setText(filme.data_lancamento)
+                etGenre.setText(filme.genero)
+                etSinopse.setText(filme.sinopse)
+            }
         }
     }
 
-    fun saveChar(view: View){
-        if(etName.text.isNotEmpty() && etYear.text.isNotEmpty() && etGenre.text.isNotEmpty() && etSinopse.text.isNotEmpty()) {
-
+    fun saveChar(view: View) {
+        if (etName.text.isNotEmpty() &&
+            etYear.text.isNotEmpty() &&
+            etGenre.text.isNotEmpty() &&
+            etSinopse.text.isNotEmpty()
+        ) {
             val filme = Filme(
                 id_filme = id_filme,
                 nome = etName.text.toString(),
@@ -57,9 +62,18 @@ class NewCharActivity : AppCompatActivity() {
                 genero = etGenre.text.toString(),
                 sinopse = etSinopse.text.toString()
             )
-            FilmeDao.insert(filme)
-            Toast.makeText(this,"Filme Adicionado", Toast.LENGTH_SHORT).show()
-        }
 
+            if (id_filme == 0) {
+                filmeDao.insert(filme)
+                Toast.makeText(this, "Filme Adicionado", Toast.LENGTH_SHORT).show()
+            } else {
+                filmeDao.update(filme)
+                Toast.makeText(this, "Filme Atualizado", Toast.LENGTH_SHORT).show()
+            }
+
+            finish()
+        } else {
+            Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+        }
     }
 }
