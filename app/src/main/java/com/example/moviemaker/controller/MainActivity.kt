@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         filmDao = FilmeDAO(this)
         listAllChars()
 
-        listView.onItemClickListener { parent, view, position, id ->
+        listView.setOnItemClickListener  { parent, view, position, id ->
             val selectedChar = parent.getItemAtPosition(position) as Filme
             val intent = Intent(this, DetailActivity::class.java).apply {
                 putExtra("id_filme", selectedChar.id_filme)
