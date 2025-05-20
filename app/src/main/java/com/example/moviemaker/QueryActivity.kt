@@ -4,28 +4,37 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.moviemaker.data.FilmeDAO
 
 class QueryActivity : AppCompatActivity() {
-    private lateinit var filmDao: FilmDao
+    private lateinit var filmDao: FilmeDAO
+    private lateinit var input: EditText
+    private lateinit var result: TextView
+    private lateinit var searchButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_query)
 
-        val input = findViewById<EditText>(R.id.queryInput)
-        val result = findViewById<TextView>(R.id.resultText)
-        val searchButton = findViewById<Button>(R.id.searchButton)
+        input = findViewById(R.id.queryInput)
+        result = findViewById(R.id.resultText)
+        searchButton = findViewById(R.id.searchButton)
 
-        filmDao = AppDatabase.getInstance(this).filmDao()
+        filmDao = FilmeDAO(this)
 
         searchButton.setOnClickListener {
-            val query = input.text.toString()
-            val results = filmDao.searchByName(query)
-            result.text = results.joinToString("\n") { it.name }
+            buscar()
+        }
+    }
+
+    private fun buscar() {
+        val query = input.text.toString()
+        val results = filmDao.search(query)
+        if (results.isEmpty()) {
+            result.text = "Nenhum filme encontrado."
+        } else {
+            result.text = results.joinToString("\n") { it.nome }
         }
     }
 }

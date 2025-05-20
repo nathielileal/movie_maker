@@ -5,10 +5,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.moviemaker.data.FilmeDAO
-import com.example.moviemaker.data.db.DBHelper
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +26,6 @@ class DetailActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Filme não encontrado!", Toast.LENGTH_SHORT).show()
             finish()
-        }
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.queryInput)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
         }
     }
 }

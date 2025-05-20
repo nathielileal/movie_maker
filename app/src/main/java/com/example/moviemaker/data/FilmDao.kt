@@ -60,6 +60,34 @@ class FilmeDAO(context: Context) {
         return filme
     }
 
+    fun search(busca: String): List<Filme> {
+        val db = dbHelper.readableDatabase
+
+        val cursor = db.query(
+            DBHelper.TABLE_NAME,
+            arrayOf("id_filme", "nome", "data_lancamento", "genero", "sinopse"),
+            "nome LIKE ?",
+            arrayOf("%$busca%"),
+            null, null, null
+        )
+
+        val listaFilmes = mutableListOf<Filme>()
+
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_filme"))
+            val nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"))
+            val dataLancamento = cursor.getString(cursor.getColumnIndexOrThrow("data_lancamento"))
+            val genero = cursor.getString(cursor.getColumnIndexOrThrow("genero"))
+            val sinopse = cursor.getString(cursor.getColumnIndexOrThrow("sinopse"))
+            listaFilmes.add(Filme(id, nome, dataLancamento, genero, sinopse))
+        }
+
+        cursor.close()
+        db.close()
+
+        return listaFilmes
+    }
+
     fun insert(filme: Filme): Long {
         val db = dbHelper.writableDatabase
 
@@ -107,7 +135,7 @@ class FilmeDAO(context: Context) {
             "id_filme = ?",
             arrayOf(id.toString())
         )
-        
+
         db.close()
 
         return linhasAfetadas
